@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Lyric Vault Workspace</title>
+
+<!-- ============ PWA: manifest, icons, mobile meta ============ -->
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkx5cmljIFZhdWx0IFdvcmtzcGFjZSIsICJzaG9ydF9uYW1lIjogIkx5cmljIFZhdWx0IiwgImRlc2NyaXB0aW9uIjogIk1hbmFnZSwgcmV2aWV3LCBhbmQgcHVibGlzaCBzb25nIGx5cmljcyBvbiB0aGUgZ28uIiwgInN0YXJ0X3VybCI6ICIuIiwgInNjb3BlIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgIm9yaWVudGF0aW9uIjogInBvcnRyYWl0LXByaW1hcnkiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjRjRGNkY3IiwgInRoZW1lX2NvbG9yIjogIiMyN0FFNjAiLCAiaWNvbnMiOiBbeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFNQUFBQURBQ0FJQUFBRGR2dnRRQUFBSHdVbEVRVlI0bk8zZFRYQVVaUjdIOFhraklTWWdpWkFFa29rV3VJaXVFaWhlQkV2Y1hYZlZGUUVQZTlTREh0M2pudld3NWQyREY0OTczcklxQnNSRnJQVU5KU1lDRzZJZ2xHYkxrRW5JR3draGhEQ1R5Y3g0Q0pWb25HVCtULzk2TWgzNWZrNVU4ZEJQRjN6cDZYNm11eE4rcU9XVkVPQlZwTlE3Z0pXTmdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUltVmVnZVc4dGFlMXc0MjdqVU9mcVB6WCsvMm5IS2Q0dVV0ZjNsOSswdkd3WjhNZFA2OS9XM1hLWXorL1lmWG0ydTJHQWYvNDh3Ny8rbjd1a2g3NHVSdVB3SWRUN1Nuc3pQR3dVL1ZiVjlYVmxXTTNXaXFyTFhYY3pOOSsrT0J6bUxzaGdkM2UwRGowNU9mRFhZWkI4Y2lVZnNSMGNtUitINzc0QlA5SGFsTXVoaTc0Y0hkSGxBb0ZIcXY5N1I5OEl2eEo0cXhENGRkQW1xNTRyRER4VVpBb2M4SHU4WlNONDJEbTJ1Mk5GWFcrcnNEemRXYjc2K3FNdzYrTWpsMGZxemIzeDFRRUZBb2s4c2U3MnUzanovUzVQTkJ5R21EVHNmTFpVQkFvVkFvOU42VkwrMkRuYzVYQ29xR0k4ODNXTStyc3JuY1VRSUtvRXMzZWkvZlNCZ0hOMVhXN3FoNTBLK3BEOVE5VmxPK3hqaTQ0OXFsZ2R0amZrM3RDd0s2bzdXM05BZWhJeTVuNVU1SHl1VkJRSGU4bjJqUDVMTEd3UWNiOThZaVVYM1N5dGpxcHpmdU1BNmVta2w5ZFBXY1BxbS9DT2lPMGRURUYwUGZHZ2V2SzZ0NnFtNjdQdWx6RGJ0WFI4dU1nei9zUDVQTVRPdVQrb3VBNXJXNGZFRDRzaURrOXZubDhpRzdiQWhvM3FlRDUyOU0zeklPL21OOTg1cFZGY3AwZFJYVmU5ZHZNdzd1bXhvNWUrMTdaYm9pSWFCNTZlek1CMzBkeHNIbDBWVi9iZGlqVEhlb2NWOGtIRFlPYnUxdHk0Vnl5blJGUWtDLzRQUXg0ZlFCOUdzdm10Y1BjNkZjYTVDK3Z2ZzVBdnFGYjYvLzJIM3pxbkh3N3ZWYk45NXpuN2VKdHE1dDNMcTIwVGo0N0xYdis2Wkd2RTFVYkFTMGtQMy9lamdVUHR5NHo5c3M5c05QS0tpbno3TUlhS0ZqaVRiN2dwQlRCM01pNGZBTDV2S1NtZW1UL1djOXpMSThDR2loNGVUNFY4UGZHUWR2V2JQcGtYWDN1MDZ4ZC8yMitvcHE0K0NQcnA2N05aTjBuV0xaRUZBZVRoOFpIaGFFM0Q2L2d2ZjF4YzhSVUI3L0hmamZ6ZlJ0NCtCRDhYM1JzTU5mWTNsMDFUT2JkaGtIRDl3ZTY3aDJ5Yjd4NVVkQWVhUXk2UlA5MWx2Vzd5dGYrMFR0NyswYi8vUEduVlV4Nndya3NkNjJiQzZJeXo5ekNDaS80dDBoNVBqMVJVQ1hmK1lRVUg2ZFk5MVhKb2VNZzUvWnRPdWVXTGxsWkhWWjFaTzFqeG8zZTM2c3UyZHkwRGk0VkFob1VmYi8vYXVqWmNiVG1vT05qOXZ2QXduVXpmT0xJYUJGSFUwNGZQMWt2QmF6My82Y3lxUS9OSitIbFJBQkxXcGdhclJqNUxKeDhMNE5qMnhZdlc3cE1VMlZ0YzNWbTQwYi9IaWdjeUk5WlJ4Y1FnUzBGUHVDVUNRY1BoUXZzTGpzK1BSRm9KZC81aERRVWs3Mm41MmFTUmtIRjd3V3MxK3NqU1RIMjRZdkdnZVhGZ0V0SlptWlBubjFqSEh3dy9jMi9XNXR3MksvdTZQbVFmc1RpVWRkdm84ckxRSXF3T2srMXlYV2VKeldpZ0o3OTgrdkVWQUJUdmZpSEk3dnozdVRZU3dTZmQ3OFZvWUwxM3ZzOXlTVkhBRVZrQXZsV252YmpJUHJLNnIzNUx2TitVRHRZOVhtOThLc2xOUG5XUVJVMk5IZTArS0NrUDNyZDZmN3NvT0FnQXBMM0JvNU4vcURjZkN6RGJzV1BPcFZGYXY0VS8wTzR4Ly9iTEJyZkhyU2FmZEtpNEJNN04rdFZzVXFGanhzK2x6RDd2TG9LdU1mZHpwbkR3SUNNbkY2S25UQnRaajkrbXMwTlhGcTZCdTNQU3MxQWpLNU5aTzBQNWQrb0c3K2xIbXgwK3E4bko3UER3Z0NzcksvdmlNYWpoeHNmSHoyMTR0ZDJJdFRCQWNCV2JXUE9MeWJaKzZ5eS83eXc4czNFdlozRkFVSEFWbGxjN2xqNWdXaDdkV2JINmlxMzNadjNQNzA0TXBhL3BsRFFBNmNiakE5RXQ5dnYzczFrOHNlVHppOHB6RTRBdjJtK3FEcG1SenNHdnUvOFkzZ2grUDc3VmZ2cDRhK0dVMU5DTHRXTWh5QjNMU1lQMmppbFJ0cUM5MWlOci9abGJiOE00ZUEzSnpvKzlyM3Q4UTd2UzAvYUFqSXpVUjZ5dmVmVS9GQlg0Zjk1M1VFRFFFNWEvWDdXYTBWZXYwMTY3ZHpFdjNtemxmZjNQbXFYMXU3T043enQwLy9tZmUzVGc5ZkdFbU9GN3lGM3FoN292L0M5UjVmTmxVU0hJR2NaWExaWTRtdi9OcGE4Sjg5WFJvQmVlSFh2N3EvTFpZRUFYblJQZEYvY2J4SDMwN2I4TVdSNUxpK25SSWlJSTk4V2JsWjBhZlBzd2pJSS8zYXV4Z3JBc3VQZ0R6U1YvK0tzU2E1L0FqSU8vRlVlcVZmZjgwaUlPOCtIK3p5L0Exb3orUmdvSDV5cFdjRTVKMXlEOFp2NC9BVElpQ1J0Njgxbk81TkM3andReTJ2bEhvZnNJSnhCSUtFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJQ0VnU0FnSUVnS0NoSUFnSVNCSUNBZ1NBb0tFZ0NBaElFZ0lDQklDZ29TQUlDRWdTQWdJRWdLQ2hJQWdJU0JJQ0FnU0FvS0VnQ0FoSUVnSUNCSUNnb1NBSUNFZ1NBZ0lFZ0tDaElBZ0lTQklDQWdTQW9LRWdDQWhJRWdJQ0JJQ2dvU0FJUGtKVE5jMkpkNTAzQ1lBQUFBQVNVVk9SSzVDWUlJPSIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn0sIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQVhGMGxFUVZSNG5PM2RXWitWNVpubzRWbzFNRk9BVEFWVllEU0lTbXNVZzZJeDJacldHQWVrai9xOEQvcTNQOEh1Zzk3N2ZIK01mYnJQbWtHSjBWYWpzY09NQ0FaSGdrTE5GQVZGVWRTOGF2V0IrUm1EVU5TdzF2UFVXdmQxbmFsUTk1T0k2Lyt1ZDNqZXdvUC84UzkxQU1SVG4zc0JBT1FoQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFSlFBQUFRbEFBQkJDUUJBVUFJQUVKUUFBQVFsQUFCQkNRQkFVQUlBRUpRQUFBUWxBQUJCQ1FCQVVBSUFFRlJqN2dVd25WOXMyUEgvbnYyM0xLTmZmZmQvWDdqUm5XWDBiZjMvNS83UHpudTJwWi83elZEUEsvLzU3K25uWnZldkQ3ejZ2eDc1NXl5akY5cWZ2UnJtR3dEVllkL0ZQMldaZTkrS2xrZlgzSmRsZEY1N3R6NlRaZTdaYXhkOCtpY2pBRlNIdHpxUGpSVW5zb3pldXlYUFIyRkdEelMzYm05dXl6TDZ3S1hEV2ViR0pBQlVoeHNUSSsvM25NNHkrdFcyM1EyRldQK2wvTlBXWDJTWk96RTFlYWpqV0piUk1jWDZZMDFWMjM4cHoxbWd0WXVibjkzd1NKYlJXUlRxQ3ErMVBaMWw5QWM5WndiR2g3S01qa2tBcUJyLzFmdm5LNlBYczR3T2RSYm95WFVQYmxwNlQ1YlJ1Um9mbGdCUU5ZcWxxVGM2am1ZWi9jTG1uVXNiRm1jWm5WNnV5Ny9YeG9jKzdEMmJaWFJZQWtBMXlYV0V1TFJoOFc4MlA1RmxkR0tMNmh0ZjJyd3J5K2czMjQ5TVRoV3pqQTVMQUtnbVgxNXYvL3o2cFN5ajkyN0pjMTAwc2VkYkhtOXVXcFpsOUg3My95UW5BRlNaQTVtK0JEeXpZY2ZheGMxWlJxZVU2L3pQK2NIT2N3UGZaaGtkbVFCUVpkNW9QMW9zVGFXZjIxQ28zN01sejcweHlUUTNMWHR1NDgreWpON244bThPQWtDVjZSOGIvS2ozMHl5amEvNWVvSmRibjJxcXo3QTl6RlNwOUViN2tmUnpFUUNxVDY1THdmK3craWYzcldqSk1qcU4xek45eFRsOCtkemwwWUVzbzRNVEFLclArOTJuQnlkdVpobTlOOU1qc2dsc1dyWjIxN3J0V1VidnUvUmZXZVlpQUZTZjhhbkozM1VjenpJNjF6RnlBcSszUFYyb0s2U2ZPelE1OGw1M25rMCtFQUNxVXE1YkJ0dVdyWDlpN1FOWlJsZGFyaXNjdis4OE1Wb2N6eklhQWFBcWZYTDEvTGREUFZsRzErU2w0SWRYYmQzVzNKcGw5UDVNRzMxVEp3QlVyMXhmQWw1cGZhcXh2aUhMNk1wNVBWUFZPb2I3VHZWL25XVTBkUUpBOVRyUWZyaFVWMG8vZDlXaTVibHVscStRK2tMaHRiYmRXVWJ2djVUblh5TGZFUUNxVmZkdy8vRytMN0tNem5XOFhDRzcxejI4Y2VtYUxLTnpQZGZOZHdTQUtwYnI4ZEZmdHp5K29uRnBsdEdWa0t0bnAvcS9ici9abDJVMDN4RUFxdGc3WFNkSGltUHA1eTV1YVBwdGE1NHRNOHR1Y1VQVFM2MC96eko2djl2L2N4TUFxdGp3NU5nN25hZXlqSzZaZTRGeWZac1pLMDc4dnZORStybjhrQUJRM1hKdEMvSGt1b2RhTXAwM0w2OWNKWHUzKytNYkV5TlpSdk05QWFDNkhidnllZmZJMWZSejZ3dUZQVzFWL3lWZzFhTGx2OXI0YUpiUjN2NjRFQWdBMVMzalJwSTFzQzNFSzVtMi8rd2JIVGg4K1Z6NnVkeENBS2g2K3k3bXVaYjQ0S290MjV2YnNvd3VsMXpuZjNLOTFJRmJDQUJWNzV1aG5yUFhMbVFabmV2OVdXWFJ1bXpkenJYYnNveDIvbWVCRUFCcVFhNFBsRDF0ejlRWE11eWdXUmF2YjNrbXkvYWZudzFjL0dxd0kvMWNma3dBcUFXSE9vNU5URTJtbjl1eWRNMlQ2eDVLUDdjc2NsM0RjUGkvY0FnQXRlRDYrTTBQZXM1a0dWMmxEd1RzV0gzdlQxZHVUaiszV0pwNnMrTm8rcm5jbGdCUUkzSnRDL0hTNWwyTEc1cXlqSjZQdlZ2eXZOcnNqNzFucjQ3ZHlES2FIeE1BYWtTdVQ1YVZUVXVmYjNrcy9kejVxQzhVWG10N0tzdm9mWGIvWDBnRWdCb3hPVlU4bE9uY1FxNmo2VGw3ZXYyTzlVdFdwNTk3ZmZ6bUgzbytTVCtYT3hFQWFrZXVzMEQvWStPanF4WXR6eko2Ym5KZHQvaGQ1L0VzMStxNUV3R2dkbncyY1BIcndjNzBjNXZxRzE5cHpYTkdaUTZXTkN6NnplWk0yMzltZW1TUE94RUFha3F1V3d5cjZGNmdGemJ0WE42NEpQM2NiNFo2em1SNlhvODdFUUJxeXNIMkkxbjJHTmk1ZGx2YnN2WHA1ODVCcnRlL3VQMS9BUklBYWtxdVhjWUtkWVU5MWJBMzNKcEZLMzY1NFpIMGM2ZEtwWU9YRHFlZnkvUUVnRnJqTE5BMFhtM2IzVmpma0g3dThTdGZaTm0xbStrSkFMVW0xNXRHN2wrNTZSOVcveVQ5M0ZteC9RTS9KQURVbW96dkdsemdYd0syTEYvLytEMFp0djhjS1k2OTNYa3kvVnp1U2dDb1FibmVOdjVhMis2R3dzTDlieXJYNWQrM08wK09GTWV5akdaNkMvY1BLOHpacWY2djIyLzJwWis3YnNtcVp6YnNTRDkzaHR6L3d5MEVnTnAwSU51bDRBVzZMY1NqYSs2N2IwVkwrcm5kdy8zSCtyNUlQNWVaRUFCcTAvNUxoMHQxcGZSelg5ejB4SktHUmVubjNsV3V3LytEN1VleS9JdGdKZ1NBMnRReDNIZXEvK3YwYzVjMUxuNXg4eFBwNTA2dm9WRC9XdHZ1TEtPZC8xbklCSUNhdFQvVHpzTUw4RjZnWnpic1dMdTRPZjNjTTFmLzhzMVFUL3E1ekpBQVVMTiszM2xpdERpZWZ1NnpHeDdKOG1rN2pWeFhKaHorTDNBQ1FNMGFtaHg1ci90MCtya05oZnBYTTUxdnVhMGxEWXRlM0pUaHJOVDQxT1NoanVQcDV6SnpBa0F0MjVmcGdZQUZkUmJveGMxUExHdGNuSDd1SDdvL0daeTRtWDR1TXljQTFMSWpseis3UERxUWZ1NmphKzY3ZDhYRzlITnZLMWVOblA5WitBU0FXbFlzVGIzUmZpVEw2QVh5SmVDZXhTdWZ6Ykg5Wi8vWTRCOTd6NmFmeTZ3SUFEVXUxM3NpYzkxM2Y0dFhNKzFPOFdiNzBTd3ZabUJXQklBYWQzNnc4OXpBdCtubmJsMitJY3ZPYTdmSTlVWGtRTHZkLzZ1QUFGRDc5bWQ2RlVuMnMwQmJsMi80MlpyNzA4LzlhckRqczRHTDZlY3lXd0pBN1h1ei9jamtWREg5M0ZmYW5zcnk5cFh2N2QyYTUvYi9YS2ZkbUMwQm9QWmRHeC82TU1jRnlUV0xWdnhxdzZQcDUzNHZ5MWVRakJmZW1TMEJJSVJjdHlSbXZCVDgySnI3dHk3ZmtIN3VueTcvK2NybzlmUnptUU1CSUlRUGVzNE1qQStsbi91UG14NWYzcmdrL2R5NmZPZC9Ebmo1ZS9VUUFFS1ltSm84MUhFcy9kd2xEWXRlMnJ3ci9keUdRdjNMclUrbW4zdGpZdVRkN28vVHoyVnVCSUFvY2gyWjd0MmE0U3pRTHpmbTJaRHVyYzdqWThXSjlIT1pHd0VnaXJQWEx2emxSbGY2dWJ2WFBieGh5ZXJFUTNOdC81bnJSV3pNalFBUVNKWXZBZldGd3A0dFQ2ZWN1TFJoOFF1YmRxYWMrSjFMTnk5bmVRa1BjeVlBQkhLdy9mQlVLY1ByQ1JQZkMvUlM2OCt6dkpiUzVkK3FJd0FFMGpOeTdXamY1K25uUHJ4cTY3Ym0xbVRqWG0vTGNOV2hWRmNTZ0tvakFNU3l2OWJmRUxCMmNmTXpHM2FrbWZWREo2OTgxVEhjbDM0dTh5RUF4UEpPMTZuaHliSDBjMTl2ZTdwUVYwZ3dhTStXcDdOcy8ybjMvMm9rQU1ReVdoeC91K3RFK3JtYmxxM2R0VzU3Z2tGWnp2K01Gc2ZmN2p5WmZpN3pKQUNFcys5aW5tUFZCTGRtM3JlaTVaRTFQNm4wbEI5N3QrdmpvY21SOUhPWkp3RWduQk5YdnV3YTdrOC85N2V0dXhiVk4xWjBSSzZ0aDJ6L1dhVUVnSEJLZGFVc3J5dHBibHIyWE10akZSMlJKUUNYUndlTzlKMUxQNWY1RXdBaXluWEZzcUwzQXUyOFo5dVc1ZXNyOS9QdkpOZlRGY3lmQUJEUnhhSGVUNjZlVHovMytaYkhtcHVXVitpSDV6ci9rK3VGYTh5ZkFCQlVsdFBXVGZXTkZkcWtzN0crNFpXMnB5cnhrNmQzYnVEYjg0T2Q2ZWRTRmdKQVVHOTE1Tm0zc2tLYmcvNXl3eU5yRnEyb3hFK2Vuc3UvVlUwQUNHcHdZdmdQUFora24vdnp0UTlzWHJhMjdEODJ5L2FmazFQRlErMUgwOCtsWEFTQXVMSmNDaTdVRmZhMGxYbHowT1dOUy81eDArUGwvWmt6OFdIdjJXczUzck5HdVFnQWNYM1UrMm4vMkdENnVXVi9XZU52TnVmWi90UDJEOVZPQUlpcldKbzYySDRrL2R4dEt6ZnZXSDF2R1g5Z2x2TS8xOGR2ZnRCekp2MWN5a2dBQ0MzWE1Xd1piOWxjdjJUMTd2VVBsZXVuemR5YkhVY25waWJUejZXTUJJRFF2cnplL3NYMTl2Uno5N1R0cmkrVVozUFFQVzI3YmYvSjNBZ0EwV1Y1UThENkphdWZYbCtlWGZ1elBQOTE0VWIzcDllK1NUK1g4aElBb251ai9XaXhOSlYrYmxtMmhmaHB1UzhuekpERC85b2dBRVRYUHpiNFVlK242ZWVXNWRhZFpDOGErNkdwVXVsZ2p0MzBLRHNCZ0R6SHM4c2JsN3l3YWVkOGZrS2hyckJuUzVrZktaaUpvMzJmOTR4Y1N6K1hzaE1BcUh1LysvVGd4SEQ2dWZNOGZmL0UybTJ0eTlhVmF6RXpsK3U5eXBTZEFFRGQrTlRrV3gzSDA4LzkxY1pINTdPQlQ1YmIvNGNueDk3cE9wVitMcFVnQUZCWGwybFRzNFpDL2F0dHUrZjJleHZyR3lxMHNlajAzdTQ2TVZvY1R6K1hTaEFBcUt1cnEvdms2dm1MUTczcDU4NTVXNGpuTnY1czFhSkt2VnBnR3JuZXFFd2xDQUQ4VlpaTHdZK3R1WC9yOGcxeitJMVpidi92R3U0L2NlWEw5SE9wRUFHQXZ6clFmcmhVbCtIVmhuTzRsWE5GNDlKZnR6eGVnYlhjUmE3L2k2Z1FBWUMveW5WNE80ZGorZCsyN2xyYzBGU0p4VXpQODE4MVJnRGdiN0tjNEw1M3hjYkgxdHcvcTkrUzVmelA2VXlYU2FnY0FZQy9lYnZyeEVoeExQM2NXVjBLM3JoMHpWUHJNbXovNmZDLzlnZ0EvTTN3NU5oL2RuMmNmdTRyclUvTmZFZlAxOHEzaytqTTVYcFVnb29TQVBnN1dSNXp2V2Z4eWw5dWZHU0d2empMODEvdmRYK2M1V0ZwS2tvQTRPL2sydWhtaGgvcjI1cGJIMXExcGRLTCtiRURsK3orVm9NRUFQNU9ycTB1WDlpMGMxbmo0cnYrc2l6YmYrYmFNSlZLRXdDNFZaYXJuVXNhRnIyMGVkZjB2NlpRVjNpOUxjUDJuN2xlbVVDbENRRGM2c0tON3JQWExxU2ZlOWVqKzEzcnRtOWF0amJOWW43STlwKzFTZ0RnTnJLYzh0NjkvdUgxUzFaUDh3dXkzUDcvUmFiWEpwT0FBTUJ0dk5seGRHSnFNdkhRaGtMOW5qdHZEdHBVMy9oeTYxM09FVlhDQWJmLzF5NEJnTnU0UG43emc1NHo2ZWRPYzR6L2ZNdGp6VTJwdC84c2xxWU90aDlKUEpSa0JBQnVMOHVsNEIycjcvM3B5czIzL1VkWjd2LzVxUGZUL3JIQjlITkpRd0RnOWo3c1BYdDE3RWI2dWJmOW9GL1p0UFM1bHNmU0w4YnQvN1ZOQU9EMkpxZUtoenFPcHArN1o4dlRoYnBiZDNwNHVmWEpSZldOaVZjeU9ESDhmcy9weEVOSlNRRGdqdmJuT1A1dFhiYnU1MnNmdU9Wdlp0bis0YTJPNDJQRmlmUnpTVVlBNEk3T0RYeDdmckF6L2R5OVcvL3VMRkRMMGpXNzFtMVB2d3piZjlZOEFZRHBaSGxaL011dFR6Yjk0SVRQNjF1ZStmRkpvVXE3ZFBQeTZhdm5FdzhsTVFHQTZSeHNQNUorRjRUbXB1WFBiZnpaOTMrWjVmbXZmUmM5L1Z2N0JBQ20wemM2Y09UeVorbm5mbjhXNk1GVlc3WTN0eVdlWHFvckhjaXhJeDZKQ1FEY3hiNGNPK0U4My9MNHlxYWxkWmx1L3o5eDVjdXU0ZjcwYzBsTUFPQXUzdXMrUFRRNWtuam9vdnJHbDF1ZkxOUVZYc3V4L1dlV2R5T1RuZ0RBWFl3V3gzL2ZlU0w5M0wxYmZ2SFUrb2RhbHE1SlBIZTBPUDVPMThuRVE4bENBT0R1OXVjNEl0NjFidnYvM1A1cStybnZkSjI2T1RtYWZpN3BDUURjM2FuK3I5dHY5aVVlV3FnclBMdGhwaThLTGlPNy84Y2hBSEIzY2U2SzZSMjVkclR2ODl5cklCRUJnQms1Y09sUHBicFM3bFZVM0lIMncxT2wyditmeVhjRUFHYWsvV2JmcWY2dmM2K2k0bXovR1lvQXdFelYvTHV4UHIzMnpWOXVkT1ZlQmVrSUFNelVXeDBuUm92anVWZFJRWFovaTBZQVlLYUdKa2ZlNjY3Wi9mRW5waVlQZFJ6THZRcVNFZ0NZaFJvK1J2Nmc1OHpBK0ZEdVZaQ1VBTUFzSEw1OHJtOTBJUGNxS3FLRzI4YWRDQURNUXJFMGRiRDlTTzVWbE4rMThhRVBlOC9tWGdXcENRRE1UcFpYeEZUYW9mYWprMVBGM0tzZ3RkU3ZtYVphL083Ri81dDdDZVgzd3R2LzFqbDhaWjQvNVB4ZzUyY0RGM2VzdnJjc1Mxb2dhckpxM0pWdkFEQnJOZlp4ZWY1RzE3bUJiM092Z2d3RUFHYnRVRWROblRESnN0Y3BDNEVBd0t4ZEhidnh4MXE1WkRwVktoMk1zYzhkUHlZQU1CYzFjeGJvU04rNXl6VjZZeXQzSlFBd0Z4LzBuTGsrZmpQM0tzcWdaa3JHSEFnQXpFVnRiSnd3TkRueWJ0Zkh1VmRCTmdJQWMxUURqODYrM1hteXRyZTNZM29DQUhOMDl0cUZDemU2YzY5aVhtcWdZY3lIQU1EY1ZmVUhhTWR3MzhrclgrVmVCVGtKQU16ZHdXcCtnZUtCUzRjanZPU1NhUWdBekYzUHlMVmpWNnIxRmVyZS9vZ0F3THhVNlZtZ2ovdS92blR6Y3U1VmtKa0F3THk4MDNscWVISXM5eXBtclVxN1JYa0pBTXpMU0hIc25hNlR1VmN4TzJQRmliYzZqK2RlQmZrSkFNeFgxVDFNKzE3MzZSc1RJN2xYUVg0Q0FQTjF2TytMcnVIKzNLdVlCZWQvK0k0QXdIeVY2cXBwUTgwcm85Zi9kUG5QdVZmQmdpQUFVQVpWZEJib2pmWWp4ZEpVN2xXd0lBZ0FsTUhGb2Q1UHJwN1B2WW9acWFKV1VXa0NBT1d4dnhxZXEvcHM0T0pYZ3gyNVY4RkNJUUJRSHIvck9EWStOWmw3RlhkeG9IcXVWWkNBQUVCNURFNE12OTk5T3ZjcXBsTXNUYjNaZmpUM0tsaEFCQURLWm9IZlh2bkgzclA5WTRPNVY4RUNJZ0JRTmgvMWZycVFQMkVYZUo5SVR3Q2diSXFscVRjVzZqbVd3WW1iZitqK0pQY3FXRmdFQU1ycHdFSTl5ajdVY1h6aFg2TW1NUUdBY3ZyOCtxVXZyN2ZuWHNWdE9QL0Rqd2tBbE5rQy9LajlkcWpuek5XLzVGNEZDNDRBUUprZFhIaDdMVlRGUTJxa1YzandQLzRsOXhvQXlNQTNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZ0JBQWdLQUVBQ0VvQUFJSVNBSUNnQkFBZ0tBRUFDRW9BQUlJU0FJQ2dCQUFnS0FFQUNFb0FBSUlTQUlDZy9odHNPczZRNkZlNy9nQUFBQUJKUlU1RXJrSmdnZz09IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifV19">
+<meta name="theme-color" content="#27AE60">
+<meta name="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+
+<!-- Android / Chrome standalone -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- iOS / Safari standalone -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lyric Vault">
+<style>
+  :root{
+    --sidebar-bg: #2C3E50;
+    --sidebar-bg-2: #34495E;
+    --sidebar-text: #b9c3ce;
+    --sidebar-text-active: #ffffff;
+    --header-green: #27AE60;
+    --header-green-dark: #219150;
+    --page-bg: #F4F6F7;
+    --surface: #FFFFFF;
+    --border: #E2E5E8;
+    --border-strong: #cfd4d9;
+    --text-primary: #2C3E50;
+    --text-secondary: #6b7785;
+    --text-muted: #9aa5b1;
+    --accent: #2ECC71;
+    --accent-dark: #219150;
+    --danger: #e74c3c;
+    --danger-hover: #c0392b;
+    --pending-bg: #fdf3dc;
+    --pending-border: #f0c869;
+    --pending-text: #a2760a;
+    --published-bg: #e6f8ee;
+    --published-border: #8fd9b6;
+    --published-text: #1a8f5c;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(44,62,80,0.08), 0 1px 2px rgba(44,62,80,0.06);
+    --shadow-md: 0 6px 20px rgba(44,62,80,0.14);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--page-bg);
+    color:var(--text-primary);
+  }
+
+  .app-shell{
+    display:flex;
+    min-height:100vh;
+  }
+
+  /* ============ LEFT SIDEBAR ============ */
+  .sidebar{
+    width:250px;
+    flex-shrink:0;
+    background:var(--sidebar-bg);
+    color:var(--sidebar-text);
+    display:flex;
+    flex-direction:column;
+    position:sticky;
+    top:0;
+    height:100vh;
+  }
+  .sidebar-profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:20px 18px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .avatar-circle{
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--sidebar-bg-2);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700;
+    color:#fff;
+    font-size:15px;
+    flex-shrink:0;
+    cursor:pointer;
+  }
+  .sidebar-profile .who p{margin:0;}
+  .sidebar-profile .who .name{font-size:14px; font-weight:600; color:var(--sidebar-text-active);}
+  .sidebar-profile .who .org{font-size:12px; color:var(--sidebar-text); opacity:0.8;}
+
+  .sidebar-nav{
+    flex:1;
+    padding:10px 0;
+    overflow-y:auto;
+  }
+  .nav-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 20px;
+    font-size:14px;
+    font-weight:500;
+    cursor:pointer;
+    color:var(--sidebar-text);
+    border-left:3px solid transparent;
+    transition:background .12s, color .12s;
+    user-select:none;
+  }
+  .nav-item .nav-icon{
+    width:18px; height:18px;
+    flex-shrink:0;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+  }
+  .nav-item:hover{background:rgba(255,255,255,0.05); color:#fff;}
+  .nav-item.active{
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+    border-left-color:var(--accent);
+  }
+
+  /* Admin-only nav items: hidden until an admin logs in (see .admin-mode
+     on <body>, toggled by setAdminMode() in the script). This is what
+     keeps admin controls off the regular user's dashboard entirely. */
+  .admin-nav-item{display:none;}
+  body.admin-mode .admin-nav-item{display:flex;}
+  .nav-divider{
+    display:none;
+    padding:14px 20px 6px;
+    font-size:11px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--sidebar-text);
+    opacity:0.6;
+  }
+  body.admin-mode .nav-divider{display:block;}
+
+  #adminPanelBtn.admin-active{
+    background:var(--accent) !important;
+    color:#0d3d24 !important;
+  }
+
+  .sidebar-footer{
+    padding:16px 18px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+  }
+  .sidebar-footer .brand-mark{
+    width:26px; height:26px;
+    border-radius:6px;
+    background:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    color:#173d2a;
+    font-weight:800;
+    font-size:13px;
+  }
+  .sidebar-footer .brand-name{
+    font-weight:700;
+    letter-spacing:.03em;
+    font-size:13px;
+    color:var(--sidebar-text-active);
+  }
+
+  /* ============ RIGHT SIDE (header + content) ============ */
+  .main-area{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+  }
+
+  /* ============ TOP HEADER BAR ============ */
+  .topbar{
+    background:var(--header-green);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:14px 24px;
+    position:sticky;
+    top:0;
+    z-index:30;
+  }
+  .topbar h1{
+    font-size:19px;
+    margin:0;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .topbar-search{
+    flex:1;
+    max-width:520px;
+    position:relative;
+  }
+  .topbar-search input{
+    width:100%;
+    padding:9px 14px 9px 34px;
+    border-radius:6px;
+    border:none;
+    background:rgba(255,255,255,0.22);
+    color:#fff;
+    font-size:14px;
+    outline:none;
+  }
+  .topbar-search input::placeholder{color:rgba(255,255,255,0.85);}
+  .topbar-search input:focus{background:rgba(255,255,255,0.32);}
+  .topbar-search .search-icon{
+    position:absolute;
+    left:11px; top:50%;
+    transform:translateY(-50%);
+    font-size:14px;
+    opacity:0.9;
+  }
+  .topbar-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:auto;
+  }
+  .topbar-actions button{
+    font-family:inherit;
+    cursor:pointer;
+  }
+  .topbar-icon-btn{
+    width:34px; height:34px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,0.18);
+    color:#fff;
+    font-size:16px;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .12s;
+  }
+  .topbar-icon-btn:hover{background:rgba(255,255,255,0.3);}
+  .btn-quick-add{
+    background:#fff;
+    color:var(--header-green-dark);
+    border:none;
+    border-radius:6px;
+    padding:9px 16px;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.02em;
+  }
+  .btn-quick-add:hover{background:#f0f0f0;}
+
+  /* ============ CONTENT: center workspace + right panel ============ */
+  .content-body{
+    flex:1;
+    display:flex;
+    gap:20px;
+    padding:22px 24px;
+    align-items:flex-start;
+  }
+  .center-panel{
+    flex:1;
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .right-panel{
+    width:300px;
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  @media (max-width: 980px){
+    .right-panel{display:none;}
+  }
+
+  /* ---------- KPI cards ---------- */
+  .kpi-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:14px;
+  }
+  .kpi-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:16px 18px;
+    text-align:center;
+  }
+  .kpi-card .kpi-value{
+    font-size:26px;
+    font-weight:700;
+    color:var(--text-primary);
+  }
+  .kpi-card .kpi-label{
+    font-size:12px;
+    color:var(--text-secondary);
+    margin-top:4px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- Tabs / panel card ---------- */
+  .panel-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .panel-card .panel-header{
+    padding:16px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .panel-card .panel-header h2{
+    margin:0;
+    font-size:16px;
+  }
+  .panel-card .panel-header p{
+    margin:2px 0 0;
+    font-size:13px;
+    color:var(--text-secondary);
+  }
+  .panel-body{padding:20px;}
+
+  .view{display:none;}
+  .view.active{display:flex; flex-direction:column; gap:20px;}
+
+  /* ---------- Success banner ---------- */
+  .banner-success{
+    display:none;
+    align-items:center;
+    gap:10px;
+    background:var(--published-bg);
+    border:1px solid var(--published-border);
+    color:var(--published-text);
+    padding:11px 16px;
+    border-radius:var(--radius);
+    font-size:13px;
+    font-weight:600;
+  }
+  .banner-success.show{display:flex;}
+
+  /* ---------- Form ---------- */
+  .field-group{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .field{margin-bottom:16px;}
+  .field.full{grid-column:1 / -1;}
+  .field label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    margin-bottom:6px;
+    color:var(--text-secondary);
+  }
+  .field input, .field textarea{
+    width:100%;
+    padding:10px 12px;
+    border-radius:6px;
+    border:1px solid var(--border-strong);
+    background:#fbfcfd;
+    color:var(--text-primary);
+    font-size:14px;
+    font-family:inherit;
+    outline:none;
+    transition:border-color .15s, box-shadow .15s;
+    resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(46,204,113,0.18);
+    background:#fff;
+  }
+  .field textarea{min-height:160px; line-height:1.5;}
+  .field .error{color:var(--danger); font-size:12px; margin-top:5px; display:none;}
+  .field.invalid input, .field.invalid textarea{border-color:var(--danger);}
+  .field.invalid .error{display:block;}
+
+  button.btn{
+    font-family:inherit;
+    cursor:pointer;
+    border:none;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:700;
+    padding:10px 18px;
+    transition:background .15s, transform .05s, filter .15s;
+  }
+  button.btn:active{transform:scale(0.98);}
+  .btn-primary{background:var(--accent); color:#0d3d24;}
+  .btn-primary:hover{background:var(--accent-dark); color:#fff;}
+  .btn-ghost{background:transparent; color:var(--text-primary); border:1px solid var(--border-strong);}
+  .btn-ghost:hover{background:var(--page-bg);}
+  .btn-danger{background:var(--danger); color:#fff;}
+  .btn-danger:hover{background:var(--danger-hover);}
+  .btn-success{background:var(--published-text); color:#fff;}
+  .btn-success:hover{filter:brightness(1.08);}
+  .btn-sm{padding:7px 13px; font-size:12px;}
+  button:disabled{opacity:0.5; cursor:not-allowed;}
+
+  /* ---------- Published feed cards ---------- */
+  .feed-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
+    gap:14px;
+  }
+  .song-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px;
+    box-shadow:var(--shadow);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    transition:box-shadow .15s, transform .15s;
+  }
+  .song-card:hover{box-shadow:var(--shadow-md); transform:translateY(-2px);}
+  .song-card h3{margin:0; font-size:15px;}
+  .song-card .artist{color:var(--text-secondary); font-size:12px; margin:0;}
+  .song-card .snippet{
+    font-size:13px;
+    line-height:1.5;
+    color:var(--text-primary);
+    white-space:pre-line;
+    max-height:90px;
+    overflow:hidden;
+    mask-image:linear-gradient(to bottom, black 65%, transparent 100%);
+  }
+  .card-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:auto;
+    padding-top:8px;
+    border-top:1px solid var(--border);
+  }
+  .badge{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:20px;
+  }
+  .badge-published{background:var(--published-bg); color:var(--published-text); border:1px solid var(--published-border);}
+  .badge-pending{background:var(--pending-bg); color:var(--pending-text); border:1px solid var(--pending-border);}
+
+  .empty-state{
+    text-align:center;
+    padding:40px 20px;
+    color:var(--text-secondary);
+    font-size:13px;
+    border:1px dashed var(--border-strong);
+    border-radius:var(--radius);
+  }
+
+  /* ---------- Pending review rows ---------- */
+  .pending-item{
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    margin-bottom:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    background:#fbfcfd;
+  }
+  .pending-item-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .pending-item-head h4{margin:0; font-size:14px;}
+  .pending-item-head .artist{margin:2px 0 0; font-size:12px; color:var(--text-secondary);}
+  .pending-lyrics{
+    font-size:13px;
+    line-height:1.5;
+    color:var(--text-primary);
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:10px 12px;
+    max-height:110px;
+    overflow-y:auto;
+    white-space:pre-line;
+  }
+  .pending-actions{display:flex; gap:8px; justify-content:flex-end;}
+
+  /* ---------- Songwriters view ---------- */
+  .writer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 4px;
+    border-bottom:1px solid var(--border);
+    font-size:14px;
+  }
+  .writer-row:last-child{border-bottom:none;}
+  .writer-row .writer-count{
+    color:var(--text-secondary);
+    font-size:12px;
+  }
+
+  /* ============ RIGHT CONTEXTUAL PANEL ============ */
+  .side-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:16px 18px;
+  }
+  .side-card h3{
+    margin:0 0 12px;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    color:var(--text-secondary);
+  }
+  .metric-line{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    padding:7px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .metric-line:last-child{border-bottom:none;}
+  .metric-line .val{font-weight:700;}
+
+  .activity-feed{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-height:340px;
+    overflow-y:auto;
+  }
+  .activity-entry{
+    font-size:12.5px;
+    line-height:1.5;
+    color:var(--text-primary);
+    padding-bottom:9px;
+    border-bottom:1px solid var(--border);
+  }
+  .activity-entry:last-child{border-bottom:none; padding-bottom:0;}
+  .activity-entry .time{
+    display:block;
+    color:var(--text-muted);
+    font-size:11px;
+    margin-top:2px;
+  }
+
+  /* ============ MODALS ============ */
+  .modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(20,25,35,0.5);
+    display:none;
+    align-items:flex-start;
+    justify-content:center;
+    padding:60px 20px;
+    z-index:100;
+    overflow-y:auto;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--surface);
+    border-radius:12px;
+    max-width:420px;
+    width:100%;
+    padding:26px;
+    box-shadow:var(--shadow-md);
+  }
+  .modal h2{margin:0 0 4px; font-size:18px;}
+  .modal p.sub{margin:0 0 18px; color:var(--text-secondary); font-size:13px;}
+  .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+  }
+  .close-x{
+    background:transparent;
+    border:none;
+    font-size:20px;
+    line-height:1;
+    color:var(--text-secondary);
+    padding:4px 8px;
+    cursor:pointer;
+  }
+  .close-x:hover{color:var(--text-primary);}
+
+  .login-error{
+    color:var(--danger);
+    font-size:13px;
+    margin-top:8px;
+    display:none;
+  }
+  .login-error.show{display:block;}
+
+  .password-wrapper{position:relative;}
+  .password-wrapper input{padding-right:64px;}
+  .toggle-password{
+    position:absolute;
+    right:6px;
+    top:50%;
+    transform:translateY(-50%);
+    background:transparent;
+    border:none;
+    color:var(--text-secondary);
+    font-size:12px;
+    font-weight:700;
+    padding:6px 10px;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .toggle-password:hover{color:var(--text-primary); background:var(--page-bg);}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed;
+    bottom:24px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--text-primary);
+    color:#fff;
+    padding:12px 20px;
+    border-radius:8px;
+    font-size:13px;
+    box-shadow:var(--shadow-md);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s, transform .2s;
+    z-index:200;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+  /* ============ PROFILE SETUP GATE ============ */
+  .profile-setup-overlay{
+    position:fixed; inset:0;
+    background:linear-gradient(135deg, var(--sidebar-bg), var(--sidebar-bg-2));
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:500;
+    padding:20px;
+  }
+  .profile-setup-overlay.open{display:flex;}
+  .profile-setup-card{
+    background:var(--surface);
+    border-radius:14px;
+    max-width:400px;
+    width:100%;
+    padding:32px 28px;
+    box-shadow:var(--shadow-md);
+    text-align:center;
+  }
+  .profile-setup-card h2{margin:0 0 6px; font-size:20px; color:var(--text-primary);}
+  .profile-setup-card p.sub{margin:0 0 22px; color:var(--text-secondary); font-size:13px;}
+  .avatar-upload{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .avatar-preview{
+    width:84px; height:84px;
+    border-radius:50%;
+    background:var(--page-bg);
+    border:2px dashed var(--border-strong);
+    display:flex; align-items:center; justify-content:center;
+    font-size:28px;
+    color:var(--text-muted);
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    cursor:pointer;
+  }
+  .profile-setup-card .field{text-align:left;}
+
+  /* ============ FULL LYRICS VIEW (read-only) ============ */
+  .full-lyrics{
+    white-space:pre-line;
+    line-height:1.7;
+    font-size:14px;
+    color:var(--text-primary);
+    max-height:420px;
+    overflow-y:auto;
+    margin-top:6px;
+    padding-right:4px;
+  }
+  .view-only-note{
+    font-size:12px;
+    color:var(--text-muted);
+    margin:10px 0 0;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  /* ============ MANAGE LYRICS (admin) ============ */
+  .manage-item{
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:14px 16px;
+    margin-bottom:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    background:#fbfcfd;
+  }
+  .manage-item-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .manage-item-head h4{margin:0; font-size:14px;}
+  .manage-item-head .artist{margin:2px 0 0; font-size:12px; color:var(--text-secondary);}
+  .manage-lyrics-preview{
+    font-size:13px;
+    line-height:1.5;
+    color:var(--text-primary);
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:10px 12px;
+    max-height:90px;
+    overflow-y:auto;
+    white-space:pre-line;
+  }
+  .manage-actions{display:flex; gap:8px; justify-content:flex-end;}
+
+  /* ============ MANAGE PROFILE (admin) ============ */
+  .profile-manage-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:6px 0 18px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:16px;
+  }
+  .profile-manage-row .avatar-lg{
+    width:64px; height:64px;
+    border-radius:50%;
+    background:var(--sidebar-bg-2);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700;
+    font-size:20px;
+    background-size:cover;
+    background-position:center;
+    flex-shrink:0;
+  }
+  .profile-manage-row .info p{margin:0;}
+  .profile-manage-row .info .pname{font-weight:700; font-size:15px;}
+  .profile-manage-row .info .pmeta{font-size:12px; color:var(--text-secondary); margin-top:2px;}
+
+  @media (max-width: 720px){
+    .sidebar{width:70px;}
+    .sidebar-profile .who, .nav-item span.label, .sidebar-footer .brand-name{display:none;}
+    .field-group{grid-template-columns:1fr;}
+    .topbar h1{display:none;}
+  }
+
+  /* ================================================================
+     MOBILE-FIRST RESPONSIVE LAYOUT (phones / small tablets)
+     Stacks sidebar -> center workspace -> right panel into a single
+     vertical column, and bumps every tappable control up to a
+     48px minimum touch target. This block is intentionally placed
+     last so it overrides the desktop/tablet rules above at this
+     breakpoint.
+     ================================================================ */
+  @media (max-width: 768px){
+    html, body{ overflow-x:hidden; }
+
+    .app-shell{
+      flex-direction:column;
+      min-height:auto;
+    }
+
+    /* ---- Sidebar becomes a normal-flow block at the top, full labels ---- */
+    .sidebar{
+      position:relative;
+      top:auto;
+      width:100%;
+      height:auto;
+      flex-direction:column;
+    }
+    .sidebar-profile .who,
+    .nav-item span.label,
+    .sidebar-footer .brand-name{
+      display:block;
+    }
+    .sidebar-nav{
+      flex:none;
+      overflow-y:visible;
+      display:flex;
+      flex-wrap:wrap;
+    }
+    .nav-item{
+      flex:1 1 auto;
+      min-width:0;
+      min-height:48px;
+      padding:12px 14px;
+    }
+    .nav-item span.label{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .sidebar-footer{
+      padding:10px 18px;
+    }
+
+    /* ---- Top bar: wrap and give the search/actions room to stack ---- */
+    .topbar{
+      flex-wrap:wrap;
+      gap:10px;
+      padding:12px 16px;
+    }
+    .topbar h1{
+      display:none;
+    }
+    .topbar-search{
+      order:3;
+      flex:1 1 100%;
+      max-width:none;
+    }
+    .topbar-actions{
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    /* ---- Content: center workspace + right panel stack vertically ---- */
+    .content-body{
+      flex-direction:column;
+      padding:16px;
+      gap:16px;
+    }
+    .right-panel{
+      display:flex;
+      width:100%;
+    }
+    .kpi-row{
+      grid-template-columns:repeat(2, 1fr);
+    }
+    .field-group{
+      grid-template-columns:1fr;
+    }
+
+    /* ---- Touch targets: every interactive control gets >=48px ---- */
+    button.btn,
+    .btn-quick-add,
+    .topbar-icon-btn,
+    .nav-item,
+    a{
+      min-height:48px;
+    }
+    button.btn,
+    .btn-quick-add{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .topbar-icon-btn{
+      width:48px;
+      height:48px;
+    }
+    .field input,
+    .field textarea,
+    .topbar-search input{
+      min-height:48px;
+    }
+    .btn-sm{
+      min-height:44px;
+      padding:10px 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PROFILE SETUP GATE (first run on this device) ============ -->
+<div class="profile-setup-overlay" id="profileSetupOverlay">
+  <div class="profile-setup-card">
+    <h2>Welcome to Lyric Vault</h2>
+    <p class="sub">Add a photo and your name to continue. You'll only need to do this once on this device.</p>
+
+    <div class="avatar-upload">
+      <div class="avatar-preview" id="setupAvatarPreview" title="Choose a photo">+</div>
+      <input type="file" id="setupPhotoInput" accept="image/*" hidden>
+      <button type="button" class="btn btn-ghost btn-sm" id="setupChoosePhotoBtn">Choose photo</button>
+    </div>
+
+    <div class="field" id="setupNameField">
+      <label for="setupNameInput">Your name</label>
+      <input type="text" id="setupNameInput" placeholder="e.g. Jamie Lee">
+      <div class="error">Please enter your name.</div>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="setupContinueBtn" style="width:100%; margin-top:6px;">Continue to dashboard</button>
+  </div>
+</div>
+
+<div class="app-shell" id="appShell" style="display:none;">
+
+  <!-- ================= LEFT SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="sidebar-profile">
+      <!-- Hidden admin trigger: triple-click this avatar -->
+      <div class="avatar-circle" id="sidebarAvatar" title="">PM</div>
+      <div class="who">
+        <p class="name" id="sidebarName">Paige Marie</p>
+        <p class="org" id="sidebarRole">Lyric Vault Workspace</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-item active" data-view="dashboardView">
+        <span class="nav-icon">&#8962;</span><span class="label">Dashboard</span>
+      </div>
+      <div class="nav-item" data-view="addLyricsView">
+        <span class="nav-icon">&#9998;</span><span class="label">Add Lyrics</span>
+      </div>
+      <div class="nav-item" data-view="settingsView">
+        <span class="nav-icon">&#9881;</span><span class="label">Settings</span>
+      </div>
+
+      <!-- Admin-only items: hidden until an admin logs in via the
+           "Admin" button in the top bar. See setAdminMode() in the
+           script below, which toggles the .admin-mode class on body. -->
+      <div class="nav-divider admin-nav-item" id="adminNavDivider">Admin</div>
+      <div class="nav-item admin-nav-item" id="pendingReviewNav">
+        <span class="nav-icon">&#128274;</span><span class="label">Pending Review</span>
+      </div>
+      <div class="nav-item admin-nav-item" id="manageLyricsNav">
+        <span class="nav-icon">&#128221;</span><span class="label">Manage Lyrics</span>
+      </div>
+      <div class="nav-item admin-nav-item" id="manageProfileNav">
+        <span class="nav-icon">&#128100;</span><span class="label">Manage Profile</span>
+      </div>
+      <div class="nav-item admin-nav-item" id="songwritersNav">
+        <span class="nav-icon">&#127925;</span><span class="label">Songwriters</span>
+      </div>
+    </nav>
+
+    <!-- Hidden admin trigger (alt target): triple-click this brand logo -->
+    <div class="sidebar-footer" id="sidebarBrandLogo">
+      <div class="brand-mark">LV</div>
+      <span class="brand-name">LYRIC VAULT</span>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN AREA ================= -->
+  <div class="main-area">
+
+    <!-- ================= TOP HEADER BAR ================= -->
+    <header class="topbar">
+      <h1>Lyric Vault Workspace</h1>
+      <div class="topbar-search">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="searchInput" placeholder="Search songs or songwriters...">
+      </div>
+      <div class="topbar-actions">
+        <button class="btn-quick-add" id="quickAddBtn">+ Add Lyrics</button>
+        <button class="btn-quick-add" id="adminPanelBtn" style="background:rgba(255,255,255,0.95); color:var(--sidebar-bg);">&#128274; Admin</button>
+        <button class="topbar-icon-btn" title="Help" aria-label="Help">?</button>
+        <button class="topbar-icon-btn" title="Notifications" aria-label="Notifications">&#128276;</button>
+      </div>
+    </header>
+
+    <!-- ================= CONTENT BODY ================= -->
+    <div class="content-body">
+
+      <!-- ---------- CENTER WORKSPACE ---------- -->
+      <div class="center-panel">
+
+        <!-- ============ DASHBOARD VIEW ============ -->
+        <section class="view active" id="dashboardView">
+          <div class="kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-value" id="kpiTotal">0</div>
+              <div class="kpi-label">Total songs</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-value" id="kpiPending">0</div>
+              <div class="kpi-label">Pending review</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-value" id="kpiPublished">0</div>
+              <div class="kpi-label">Published count</div>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-header">
+              <div>
+                <h2>Published feed</h2>
+                <p>Approved lyrics visible to the whole workspace.</p>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="feed-grid" id="lyricsGrid"></div>
+              <div class="empty-state" id="emptyState" style="display:none;">
+                No published lyrics match your search yet.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ ADD LYRICS VIEW ============ -->
+        <section class="view" id="addLyricsView">
+          <div class="banner-success" id="submitBanner">Submitted — now awaiting admin approval.</div>
+
+          <div class="panel-card">
+            <div class="panel-header">
+              <div>
+                <h2>Add lyrics</h2>
+                <p>Submissions are staged as pending until an admin approves them.</p>
+              </div>
+            </div>
+            <div class="panel-body">
+              <form id="lyricsForm" novalidate>
+                <div class="field-group">
+                  <div class="field" id="titleField">
+                    <label for="songTitle">Song title</label>
+                    <input type="text" id="songTitle" placeholder="e.g. Midnight Static">
+                    <div class="error">Please enter a song title.</div>
+                  </div>
+                  <div class="field" id="artistField">
+                    <label for="artistInput">Songwriter(s)</label>
+                    <input type="text" id="artistInput" placeholder="e.g. J. Alvarez, R. Kim">
+                    <div class="error">Please enter at least one songwriter.</div>
+                  </div>
+                  <div class="field full" id="lyricsField">
+                    <label for="lyricsText">Lyrics</label>
+                    <textarea id="lyricsText" placeholder="Type or paste the full lyrics here..."></textarea>
+                    <div class="error">Please enter the lyrics text.</div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submitBtn">Submit for review</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ PENDING REVIEW VIEW (admin-gated) ============ -->
+        <section class="view" id="pendingReviewView">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div>
+                <h2>Pending review queue</h2>
+                <p>Approve to publish permanently, or reject to delete.</p>
+              </div>
+              <button class="btn btn-ghost btn-sm" id="lockExitBtn">Lock &amp; exit</button>
+            </div>
+            <div class="panel-body">
+              <div id="pendingList"></div>
+              <div class="empty-state" id="adminEmptyState" style="display:none;">
+                No pending submissions right now.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ MANAGE LYRICS VIEW (admin-gated) ============ -->
+        <section class="view" id="manageLyricsView">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div>
+                <h2>Manage lyrics</h2>
+                <p>Edit or permanently delete any submission, published or pending.</p>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div id="manageLyricsList"></div>
+              <div class="empty-state" id="manageLyricsEmptyState" style="display:none;">
+                No lyrics on record yet.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ MANAGE PROFILE VIEW (admin-gated) ============ -->
+        <section class="view" id="manageProfileView">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div>
+                <h2>Manage profile</h2>
+                <p>Edit or remove the name and photo saved on this device.</p>
+              </div>
+            </div>
+            <div class="panel-body" id="manageProfileBody"></div>
+          </div>
+        </section>
+
+        <!-- ============ SONGWRITERS VIEW ============ -->
+        <section class="view" id="songwritersView">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div>
+                <h2>Songwriters</h2>
+                <p>Everyone credited across published and pending lyrics.</p>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div id="songwritersList"></div>
+              <div class="empty-state" id="songwritersEmptyState" style="display:none;">
+                No songwriters on record yet.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ SETTINGS VIEW ============ -->
+        <section class="view" id="settingsView">
+          <div class="panel-card">
+            <div class="panel-header">
+              <div>
+                <h2>Settings</h2>
+                <p>Workspace configuration for this prototype.</p>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="metric-line"><span>Storage backend</span><span class="val">localStorage (mock)</span></div>
+              <div class="metric-line"><span>Admin auth</span><span class="val">Mock password gate</span></div>
+              <div class="metric-line"><span>Data key</span><span class="val">app_lyrics</span></div>
+              <div class="metric-line"><span>Device profile key</span><span class="val">app_user_profile</span></div>
+              <p style="color:var(--text-secondary); font-size:13px; margin-top:14px;">
+                See inline comments in the <code>DataService</code> and mock-auth blocks of the source
+                for how to swap this prototype onto Supabase or Firebase.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ---------- RIGHT CONTEXTUAL PANEL ---------- -->
+      <aside class="right-panel">
+        <div class="side-card">
+          <h3>Quick metrics</h3>
+          <div class="metric-line"><span>Total songs</span><span class="val" id="sideTotal">0</span></div>
+          <div class="metric-line"><span>Published</span><span class="val" id="sidePublished">0</span></div>
+          <div class="metric-line"><span>Pending</span><span class="val" id="sidePending">0</span></div>
+          <div class="metric-line"><span>Songwriters</span><span class="val" id="sideWriters">0</span></div>
+        </div>
+
+        <div class="side-card">
+          <h3>Recent activity</h3>
+          <div class="activity-feed" id="activityFeed"></div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADMIN LOGIN MODAL ============ -->
+<div class="modal-overlay" id="loginOverlay">
+  <div class="modal">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <h2>Admin access</h2>
+        <p class="sub">Enter the admin password to open the review queue.</p>
+      </div>
+      <button class="close-x" id="closeLoginBtn" aria-label="Close">&times;</button>
+    </div>
+
+    <form id="loginForm" novalidate>
+      <div class="field" id="passwordField">
+        <label for="passwordInput">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="passwordInput" placeholder="Enter admin password" autocomplete="off">
+          <button type="button" class="toggle-password" id="togglePasswordBtn" aria-label="Show password">Show</button>
+        </div>
+      </div>
+      <div class="login-error" id="loginError">Incorrect password. Try again.</div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancelLoginBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Unlock admin panel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ VIEW LYRICS MODAL (read-only, all users) ============ -->
+<div class="modal-overlay" id="viewLyricsOverlay">
+  <div class="modal" style="max-width:560px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <h2 id="viewLyricsTitle"></h2>
+        <p class="sub" id="viewLyricsArtist"></p>
+      </div>
+      <button class="close-x" id="closeViewLyricsBtn" aria-label="Close">&times;</button>
+    </div>
+    <div class="full-lyrics" id="viewLyricsBody"></div>
+    <p class="view-only-note">&#128274; View only &mdash; ask an admin to make changes.</p>
+  </div>
+</div>
+
+<!-- ============ EDIT LYRICS MODAL (admin only) ============ -->
+<div class="modal-overlay" id="editLyricsOverlay">
+  <div class="modal" style="max-width:560px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <h2>Edit lyrics</h2>
+        <p class="sub">Admin changes apply immediately.</p>
+      </div>
+      <button class="close-x" id="closeEditLyricsBtn" aria-label="Close">&times;</button>
+    </div>
+    <form id="editLyricsForm" novalidate>
+      <input type="hidden" id="editLyricsId">
+      <div class="field" id="editTitleField">
+        <label for="editTitleInput">Song title</label>
+        <input type="text" id="editTitleInput">
+        <div class="error">Please enter a song title.</div>
+      </div>
+      <div class="field" id="editArtistField">
+        <label for="editArtistInput">Songwriter(s)</label>
+        <input type="text" id="editArtistInput">
+        <div class="error">Please enter at least one songwriter.</div>
+      </div>
+      <div class="field" id="editLyricsField">
+        <label for="editLyricsTextarea">Lyrics</label>
+        <textarea id="editLyricsTextarea" style="min-height:180px;"></textarea>
+        <div class="error">Please enter the lyrics text.</div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancelEditLyricsBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ EDIT PROFILE MODAL (admin only) ============ -->
+<div class="modal-overlay" id="editProfileOverlay">
+  <div class="modal">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <h2>Edit profile</h2>
+        <p class="sub">Update the name and photo saved on this device.</p>
+      </div>
+      <button class="close-x" id="closeEditProfileBtn" aria-label="Close">&times;</button>
+    </div>
+    <form id="editProfileForm" novalidate>
+      <div class="avatar-upload">
+        <div class="avatar-preview" id="editAvatarPreview" title="Choose a photo">+</div>
+        <input type="file" id="editPhotoInput" accept="image/*" hidden>
+        <button type="button" class="btn btn-ghost btn-sm" id="editChoosePhotoBtn">Choose photo</button>
+      </div>
+      <div class="field" id="editProfileNameField">
+        <label for="editProfileNameInput">Name</label>
+        <input type="text" id="editProfileNameInput">
+        <div class="error">Please enter a name.</div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancelEditProfileBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+/*
+ * SECURITY NOTE: this whole app is wrapped in an IIFE so that internal
+ * state like `isAdminUnlocked` and `MOCK_ADMIN_PASSWORD` are not bare
+ * globals — someone can't just open devtools and type
+ * `isAdminUnlocked = true` to bypass the login. This is still a purely
+ * client-side prototype (the password ships in the page source and can
+ * be read via "view source" or the debugger), so it raises the bar
+ * against casual tampering but is not real security. Swapping the mock
+ * auth block below for Supabase/Firebase auth (see the migration notes
+ * further down) is the only way to make this genuinely secure.
+ */
+
+/*
+ * ==================================================================
+ * DATA SERVICE — backend abstraction layer
+ * ==================================================================
+ * Every read/write in this app goes through DataService. All methods
+ * are async, even though the localStorage implementation below is
+ * synchronous under the hood — that keeps the call sites identical
+ * once you swap in a real backend.
+ *
+ * Data schema (per entry):
+ *   { id: string, title: string, artist: string, lyrics: string,
+ *     status: 'pending' | 'published', createdAt: number (ms timestamp) }
+ *
+ * ------------------------------------------------------------------
+ * MIGRATING TO SUPABASE (example)
+ * ------------------------------------------------------------------
+ *   import { createClient } from '@supabase/supabase-js';
+ *   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+ *
+ *   async getAll() {
+ *     const { data, error } = await supabase.from('lyrics').select('*');
+ *     if (error) throw error;
+ *     return data;
+ *   }
+ *   async submit({ title, artist, lyrics }) {
+ *     const { data, error } = await supabase.from('lyrics').insert([{
+ *       title, artist, lyrics, status: 'pending', created_at: Date.now()
+ *     }]).select();
+ *     if (error) throw error;
+ *     return data[0];
+ *   }
+ *   async updateStatus(id, status) {
+ *     const { error } = await supabase.from('lyrics').update({ status }).eq('id', id);
+ *     if (error) throw error;
+ *   }
+ *   async delete(id) {
+ *     const { error } = await supabase.from('lyrics').delete().eq('id', id);
+ *     if (error) throw error;
+ *   }
+ *
+ * ------------------------------------------------------------------
+ * MIGRATING TO FIREBASE FIRESTORE (example)
+ * ------------------------------------------------------------------
+ *   import { initializeApp } from 'firebase/app';
+ *   import { getFirestore, collection, getDocs, addDoc, updateDoc,
+ *            deleteDoc, doc } from 'firebase/firestore';
+ *   const app = initializeApp(firebaseConfig);
+ *   const db = getFirestore(app);
+ *   const lyricsRef = collection(db, 'lyrics');
+ *
+ *   async getAll() {
+ *     const snap = await getDocs(lyricsRef);
+ *     return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+ *   }
+ *   async submit({ title, artist, lyrics }) {
+ *     const docRef = await addDoc(lyricsRef, {
+ *       title, artist, lyrics, status: 'pending', createdAt: Date.now()
+ *     });
+ *     return { id: docRef.id, title, artist, lyrics, status: 'pending' };
+ *   }
+ *   async updateStatus(id, status) {
+ *     await updateDoc(doc(db, 'lyrics', id), { status });
+ *   }
+ *   async delete(id) {
+ *     await deleteDoc(doc(db, 'lyrics', id));
+ *   }
+ *
+ * In both cases, only the internals of DataService change — every
+ * caller in the UI code below (getAll/getPending/getPublished/submit/
+ * updateStatus/delete) keeps the exact same signature.
+ * ==================================================================
+ */
+
+const STORAGE_KEY = 'app_lyrics';
+
+const SEED_DATA = [
+  {
+    id: 'seed-1',
+    title: 'Harbor Lights',
+    artist: 'M. Tran',
+    lyrics: "Harbor lights are calling me back home\nAcross the water, further than I've known\nEvery wave remembers what I said\nBefore I left and chased the road ahead",
+    status: 'published',
+    createdAt: Date.now() - 1000 * 60 * 60 * 24 * 5
+  },
+  {
+    id: 'seed-2',
+    title: 'Paper Planes and Radio Waves',
+    artist: 'D. Okafor',
+    lyrics: "We used to fold our dreams like paper planes\nSend them through the static, through the rain\nNow the signal's clearer than before\nBut I still miss the crackle at your door",
+    status: 'published',
+    createdAt: Date.now() - 1000 * 60 * 60 * 24 * 2
+  },
+  {
+    id: 'seed-3',
+    title: 'Slow Fuse',
+    artist: 'R. Kim',
+    lyrics: "You lit a slow fuse and walked away\nLeft me counting sparks till break of day\nI'm not angry, just a little burned\nBy the ending I should've seen and learned",
+    status: 'pending',
+    createdAt: Date.now() - 1000 * 60 * 60 * 6
+  }
+];
+
+const DataService = {
+  async _readAll() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : SEED_DATA;
+    } catch (e) {
+      console.error('DataService: failed to read storage', e);
+      return [];
+    }
+  },
+  async _writeAll(list) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    } catch (e) {
+      console.error('DataService: failed to write storage', e);
+    }
+  },
+
+  async getAll() {
+    return this._readAll();
+  },
+  async getPublished() {
+    const all = await this._readAll();
+    return all.filter(item => item.status === 'published');
+  },
+  async getPending() {
+    const all = await this._readAll();
+    return all.filter(item => item.status === 'pending');
+  },
+  async submit({ title, artist, lyrics }) {
+    const all = await this._readAll();
+    const entry = {
+      id: Date.now().toString() + '-' + Math.random().toString(36).slice(2, 7),
+      title: title.trim(),
+      artist: artist.trim(),
+      lyrics: lyrics.trim(),
+      status: 'pending',
+      createdAt: Date.now()
+    };
+    all.unshift(entry);
+    await this._writeAll(all);
+    return entry;
+  },
+  async updateStatus(id, status) {
+    const all = await this._readAll();
+    const idx = all.findIndex(item => item.id === id);
+    if (idx === -1) return null;
+    all[idx].status = status;
+    await this._writeAll(all);
+    return all[idx];
+  },
+  async delete(id) {
+    const all = await this._readAll();
+    const filtered = all.filter(item => item.id !== id);
+    await this._writeAll(filtered);
+  },
+  async update(id, { title, artist, lyrics }) {
+    const all = await this._readAll();
+    const idx = all.findIndex(item => item.id === id);
+    if (idx === -1) return null;
+    all[idx] = {
+      ...all[idx],
+      title: title.trim(),
+      artist: artist.trim(),
+      lyrics: lyrics.trim()
+    };
+    await this._writeAll(all);
+    return all[idx];
+  }
+};
+
+/*
+ * ==================================================================
+ * PROFILE SERVICE — per-device name + photo, gates the dashboard
+ * ==================================================================
+ * Stored in localStorage on this device/browser only. A real backend
+ * would tie this to an authenticated account instead.
+ */
+const PROFILE_KEY = 'app_user_profile';
+const ProfileService = {
+  get() {
+    try {
+      const raw = localStorage.getItem(PROFILE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      console.error('ProfileService: failed to read storage', e);
+      return null;
+    }
+  },
+  save(profile) {
+    try {
+      localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+    } catch (e) {
+      console.error('ProfileService: failed to write storage', e);
+    }
+  },
+  clear() {
+    localStorage.removeItem(PROFILE_KEY);
+  }
+};
+
+/*
+ * ==================================================================
+ * MOCK AUTH — replace with real backend auth before shipping
+ * ==================================================================
+ * This is a client-side password check for prototyping only. Anyone
+ * can read this password out of the page source, so it provides no
+ * real security — do not reuse this pattern in production.
+ *
+ * MIGRATING TO SUPABASE AUTH:
+ *   const { data, error } = await supabase.auth.signInWithPassword({
+ *     email: adminEmail, password: enteredPassword
+ *   });
+ *   if (error) { showLoginError(); return; }
+ *
+ * MIGRATING TO FIREBASE AUTH:
+ *   import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+ *   const auth = getAuth();
+ *   try {
+ *     await signInWithEmailAndPassword(auth, adminEmail, enteredPassword);
+ *   } catch (e) { showLoginError(); return; }
+ * ==================================================================
+ */
+const MOCK_ADMIN_PASSWORD = 'CL33FORD';
+let isAdminUnlocked = false;
+
+// In-memory activity log for the right-panel feed (not persisted — a
+// real build would read this from an audit table or backend events).
+const activityLog = [];
+function pushActivity(text) {
+  activityLog.unshift({ text, time: Date.now() });
+  if (activityLog.length > 8) activityLog.pop();
+  renderActivityFeed();
+}
+
+/*
+ * ------------------------------------------------------------------
+ * HELPERS
+ * ------------------------------------------------------------------
+ */
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+function formatDate(ts) {
+  return new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+}
+function formatTime(ts) {
+  return new Date(ts).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+}
+function getInitials(name) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '?';
+  return (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase();
+}
+function readFileAsDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error('Could not read file'));
+    reader.readAsDataURL(file);
+  });
+}
+function setAvatarVisual(el, profile) {
+  el.textContent = '';
+  if (profile && profile.photo) {
+    el.style.backgroundImage = `url(${profile.photo})`;
+    el.style.backgroundSize = 'cover';
+    el.style.backgroundPosition = 'center';
+  } else {
+    el.style.backgroundImage = '';
+    el.textContent = profile ? getInitials(profile.name) : 'PM';
+  }
+}
+function applyProfileToUI(profile) {
+  document.getElementById('sidebarName').textContent = profile.name;
+  setAvatarVisual(document.getElementById('sidebarAvatar'), profile);
+}
+
+let toastTimer = null;
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+/*
+ * ------------------------------------------------------------------
+ * ADMIN MODE — single source of truth for admin session state
+ * ------------------------------------------------------------------
+ * Admin-only nav items (Pending Review, Manage Lyrics, Manage Profile,
+ * Songwriters) live in the DOM but are hidden via the .admin-mode CSS
+ * gate until this function turns admin mode on. That's what actually
+ * keeps them off the regular user's dashboard — a signed-out visitor
+ * has no way to see or click them, not even by exploring the sidebar.
+ */
+function setAdminMode(unlocked) {
+  isAdminUnlocked = unlocked;
+  document.body.classList.toggle('admin-mode', unlocked);
+
+  const adminBtn = document.getElementById('adminPanelBtn');
+  adminBtn.textContent = unlocked ? '\u{1F513} Exit admin' : '\u{1F512} Admin';
+  adminBtn.classList.toggle('admin-active', unlocked);
+
+  document.getElementById('sidebarRole').textContent = unlocked
+    ? 'Admin mode'
+    : 'Lyric Vault Workspace';
+}
+
+function exitAdminMode() {
+  setAdminMode(false);
+  switchView('dashboardView');
+  pushActivity('Admin exited the admin panel');
+  showToast('Exited admin panel.');
+}
+
+/*
+ * ------------------------------------------------------------------
+ * VIEW SWITCHING
+ * ------------------------------------------------------------------
+ */
+function switchView(viewId) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(viewId).classList.add('active');
+
+  document.querySelectorAll('.nav-item[data-view]').forEach(item => {
+    item.classList.toggle('active', item.dataset.view === viewId);
+  });
+  // Admin-only nav items highlight only when their own view is active
+  document.getElementById('pendingReviewNav').classList.toggle('active', viewId === 'pendingReviewView');
+  document.getElementById('manageLyricsNav').classList.toggle('active', viewId === 'manageLyricsView');
+  document.getElementById('manageProfileNav').classList.toggle('active', viewId === 'manageProfileView');
+  document.getElementById('songwritersNav').classList.toggle('active', viewId === 'songwritersView');
+
+  if (viewId === 'dashboardView') renderDashboardFeed(document.getElementById('searchInput').value);
+  if (viewId === 'songwritersView') renderSongwriters();
+  if (viewId === 'pendingReviewView') renderPendingReview();
+  if (viewId === 'manageLyricsView') renderManageLyrics();
+  if (viewId === 'manageProfileView') renderManageProfile();
+}
+
+document.querySelectorAll('.nav-item[data-view]').forEach(item => {
+  item.addEventListener('click', () => switchView(item.dataset.view));
+});
+document.getElementById('quickAddBtn').addEventListener('click', () => switchView('addLyricsView'));
+
+// Admin-gated nav items: hidden from the DOM's visible flow until admin
+// mode is on (see setAdminMode). The isAdminUnlocked check here is a
+// defense-in-depth backstop, not the primary gate.
+function wireAdminNav(navId, viewId) {
+  document.getElementById(navId).addEventListener('click', () => {
+    if (isAdminUnlocked) {
+      switchView(viewId);
+    } else {
+      openLoginModal(viewId);
+    }
+  });
+}
+wireAdminNav('pendingReviewNav', 'pendingReviewView');
+wireAdminNav('manageLyricsNav', 'manageLyricsView');
+wireAdminNav('manageProfileNav', 'manageProfileView');
+wireAdminNav('songwritersNav', 'songwritersView');
+
+// The single top-bar "Admin" button: opens the login form when signed
+// out, or exits admin mode (back to the regular dashboard) when signed in.
+document.getElementById('adminPanelBtn').addEventListener('click', () => {
+  if (isAdminUnlocked) {
+    exitAdminMode();
+  } else {
+    openLoginModal('dashboardView');
+  }
+});
+
+/*
+ * ------------------------------------------------------------------
+ * RENDERING
+ * ------------------------------------------------------------------
+ */
+async function renderKPIs() {
+  const all = await DataService.getAll();
+  const published = all.filter(i => i.status === 'published').length;
+  const pending = all.filter(i => i.status === 'pending').length;
+  const writers = new Set(all.map(i => i.artist.trim().toLowerCase())).size;
+
+  document.getElementById('kpiTotal').textContent = all.length;
+  document.getElementById('kpiPending').textContent = pending;
+  document.getElementById('kpiPublished').textContent = published;
+
+  document.getElementById('sideTotal').textContent = all.length;
+  document.getElementById('sidePublished').textContent = published;
+  document.getElementById('sidePending').textContent = pending;
+  document.getElementById('sideWriters').textContent = writers;
+}
+
+async function renderDashboardFeed(filterText = '') {
+  const grid = document.getElementById('lyricsGrid');
+  const emptyState = document.getElementById('emptyState');
+
+  const published = await DataService.getPublished();
+  const term = filterText.trim().toLowerCase();
+  const filtered = term
+    ? published.filter(item =>
+        item.title.toLowerCase().includes(term) ||
+        item.artist.toLowerCase().includes(term))
+    : published;
+
+  grid.innerHTML = '';
+  if (filtered.length === 0) {
+    emptyState.style.display = 'block';
+  } else {
+    emptyState.style.display = 'none';
+    filtered.forEach(item => {
+      const card = document.createElement('article');
+      card.className = 'song-card';
+      card.dataset.id = item.id;
+      card.style.cursor = 'pointer';
+      card.title = 'Click to view full lyrics';
+      card.innerHTML = `
+        <h3>${escapeHtml(item.title)}</h3>
+        <p class="artist">${escapeHtml(item.artist)}</p>
+        <div class="snippet">${escapeHtml(item.lyrics)}</div>
+        <div class="card-footer">
+          <span class="badge badge-published">Published</span>
+          <span style="font-size:11px; color:var(--text-muted);">${formatDate(item.createdAt)}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  await renderKPIs();
+}
+
+async function renderPendingReview() {
+  const list = document.getElementById('pendingList');
+  const emptyState = document.getElementById('adminEmptyState');
+  const pending = await DataService.getPending();
+
+  list.innerHTML = '';
+  if (pending.length === 0) {
+    emptyState.style.display = 'block';
+  } else {
+    emptyState.style.display = 'none';
+    pending.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'pending-item';
+      row.innerHTML = `
+        <div class="pending-item-head">
+          <div>
+            <h4>${escapeHtml(item.title)}</h4>
+            <p class="artist">${escapeHtml(item.artist)} &middot; submitted ${formatDate(item.createdAt)}</p>
+          </div>
+          <span class="badge badge-pending">Pending</span>
+        </div>
+        <div class="pending-lyrics">${escapeHtml(item.lyrics)}</div>
+        <div class="pending-actions">
+          <button class="btn btn-danger btn-sm" data-action="reject" data-id="${item.id}">Reject</button>
+          <button class="btn btn-ghost btn-sm" data-action="edit" data-id="${item.id}">Edit</button>
+          <button class="btn btn-success btn-sm" data-action="approve" data-id="${item.id}">Approve</button>
+        </div>
+      `;
+      list.appendChild(row);
+    });
+  }
+  await renderKPIs();
+}
+
+async function renderSongwriters() {
+  const list = document.getElementById('songwritersList');
+  const emptyState = document.getElementById('songwritersEmptyState');
+  const all = await DataService.getAll();
+
+  const counts = {};
+  all.forEach(item => {
+    const key = item.artist.trim();
+    if (!key) return;
+    counts[key] = (counts[key] || 0) + 1;
+  });
+  const names = Object.keys(counts).sort((a, b) => a.localeCompare(b));
+
+  list.innerHTML = '';
+  if (names.length === 0) {
+    emptyState.style.display = 'block';
+  } else {
+    emptyState.style.display = 'none';
+    names.forEach(name => {
+      const row = document.createElement('div');
+      row.className = 'writer-row';
+      row.innerHTML = `
+        <span>${escapeHtml(name)}</span>
+        <span class="writer-count">${counts[name]} song${counts[name] === 1 ? '' : 's'}</span>
+      `;
+      list.appendChild(row);
+    });
+  }
+}
+
+function renderActivityFeed() {
+  const feed = document.getElementById('activityFeed');
+  if (activityLog.length === 0) {
+    feed.innerHTML = '<div class="empty-state" style="padding:16px 0;">No activity yet this session.</div>';
+    return;
+  }
+  feed.innerHTML = activityLog.map(entry => `
+    <div class="activity-entry">
+      ${escapeHtml(entry.text)}
+      <span class="time">${formatTime(entry.time)}</span>
+    </div>
+  `).join('');
+}
+
+/*
+ * ------------------------------------------------------------------
+ * SEARCH (Dashboard view)
+ * ------------------------------------------------------------------
+ */
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  // Only filters the dashboard feed; jump there so results are visible.
+  if (!document.getElementById('dashboardView').classList.contains('active')) {
+    switchView('dashboardView');
+  }
+  renderDashboardFeed(e.target.value);
+});
+
+/*
+ * ------------------------------------------------------------------
+ * SUBMISSION FORM
+ * ------------------------------------------------------------------
+ */
+function clearFieldErrors() {
+  ['titleField', 'artistField', 'lyricsField'].forEach(id => {
+    document.getElementById(id).classList.remove('invalid');
+  });
+}
+
+document.getElementById('lyricsForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  clearFieldErrors();
+  document.getElementById('submitBanner').classList.remove('show');
+
+  const title = document.getElementById('songTitle').value;
+  const artist = document.getElementById('artistInput').value;
+  const lyrics = document.getElementById('lyricsText').value;
+
+  let hasError = false;
+  if (!title.trim()) { document.getElementById('titleField').classList.add('invalid'); hasError = true; }
+  if (!artist.trim()) { document.getElementById('artistField').classList.add('invalid'); hasError = true; }
+  if (!lyrics.trim()) { document.getElementById('lyricsField').classList.add('invalid'); hasError = true; }
+  if (hasError) return;
+
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting...';
+
+  try {
+    await DataService.submit({ title, artist, lyrics });
+    document.getElementById('lyricsForm').reset();
+    document.getElementById('submitBanner').classList.add('show');
+    pushActivity(`Submitted "${title.trim()}" for review`);
+    await renderKPIs();
+    showToast('Submitted — awaiting admin approval.');
+  } catch (err) {
+    console.error('Submission failed:', err);
+    showToast('Something went wrong. Please try again.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit for review';
+  }
+});
+
+['songTitle', 'artistInput', 'lyricsText'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => {
+    const fieldMap = { songTitle: 'titleField', artistInput: 'artistField', lyricsText: 'lyricsField' };
+    document.getElementById(fieldMap[id]).classList.remove('invalid');
+  });
+});
+
+/*
+ * ------------------------------------------------------------------
+ * ADMIN LOGIN MODAL — hidden triggers + password gate + show/hide
+ * ------------------------------------------------------------------
+ */
+const loginOverlay = document.getElementById('loginOverlay');
+let loginTargetView = 'dashboardView';
+
+function openLoginModal(targetView) {
+  if (targetView) loginTargetView = targetView;
+  if (isAdminUnlocked) {
+    switchView(loginTargetView);
+    return;
+  }
+  document.getElementById('loginError').classList.remove('show');
+  document.getElementById('passwordInput').value = '';
+  document.getElementById('passwordInput').type = 'password';
+  document.getElementById('togglePasswordBtn').textContent = 'Show';
+  loginOverlay.classList.add('open');
+  document.getElementById('passwordInput').focus();
+}
+function closeLoginModal() {
+  loginOverlay.classList.remove('open');
+}
+
+document.getElementById('closeLoginBtn').addEventListener('click', closeLoginModal);
+document.getElementById('cancelLoginBtn').addEventListener('click', closeLoginModal);
+loginOverlay.addEventListener('click', (e) => {
+  if (e.target === loginOverlay) closeLoginModal();
+});
+
+document.getElementById('togglePasswordBtn').addEventListener('click', () => {
+  const input = document.getElementById('passwordInput');
+  const btn = document.getElementById('togglePasswordBtn');
+  const isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+  btn.textContent = isHidden ? 'Hide' : 'Show';
+  btn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+  input.focus();
+});
+
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const entered = document.getElementById('passwordInput').value;
+
+  // Mock check — see the MOCK AUTH comment block above for how to
+  // replace this with real Supabase/Firebase authentication.
+  if (entered === MOCK_ADMIN_PASSWORD) {
+    setAdminMode(true);
+    // Open the destination view immediately, then close the modal —
+    // never gate the panel's appearance on anything async.
+    switchView(loginTargetView);
+    closeLoginModal();
+    pushActivity('Admin unlocked the admin panel');
+  } else {
+    document.getElementById('loginError').classList.add('show');
+  }
+});
+
+// Hidden trigger #1: Ctrl+Shift+A (Cmd+Shift+A on Mac) anywhere on the page.
+document.addEventListener('keydown', (e) => {
+  if (e.shiftKey && (e.ctrlKey || e.metaKey) && (e.key === 'A' || e.key === 'a')) {
+    e.preventDefault();
+    openLoginModal();
+  }
+});
+
+// Hidden trigger #2: triple-click the sidebar avatar or the brand logo, within 1.5s.
+let clickCount = 0;
+let clickResetTimer = null;
+function handleSecretClick() {
+  clickCount++;
+  clearTimeout(clickResetTimer);
+  clickResetTimer = setTimeout(() => { clickCount = 0; }, 1500);
+  if (clickCount >= 3) {
+    clickCount = 0;
+    openLoginModal();
+  }
+}
+document.getElementById('sidebarAvatar').addEventListener('click', handleSecretClick);
+document.getElementById('sidebarBrandLogo').addEventListener('click', handleSecretClick);
+
+/*
+ * ------------------------------------------------------------------
+ * PENDING REVIEW ACTIONS (approve / reject)
+ * ------------------------------------------------------------------
+ */
+document.getElementById('pendingList').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if (!btn) return;
+  const { action, id } = btn.dataset;
+
+  if (action === 'edit') {
+    const all = await DataService.getAll();
+    const item = all.find(i => i.id === id);
+    if (item) openEditLyricsModal(item);
+    return;
+  }
+
+  btn.disabled = true;
+  try {
+    if (action === 'approve') {
+      const item = await DataService.updateStatus(id, 'published');
+      pushActivity(`Approved "${item ? item.title : id}"`);
+      showToast('Lyrics approved and published.');
+    } else if (action === 'reject') {
+      await DataService.delete(id);
+      pushActivity(`Rejected submission ${id}`);
+      showToast('Submission rejected and removed.');
+    }
+    await renderPendingReview();
+  } catch (err) {
+    console.error('Action failed:', err);
+    showToast('Something went wrong. Please try again.');
+    btn.disabled = false;
+  }
+});
+
+document.getElementById('lockExitBtn').addEventListener('click', exitAdminMode);
+
+/*
+ * ------------------------------------------------------------------
+ * PROFILE SETUP GATE (photo + name, shown once per device)
+ * ------------------------------------------------------------------
+ */
+let pendingSetupPhoto = null;
+
+document.getElementById('setupAvatarPreview').addEventListener('click', () => {
+  document.getElementById('setupPhotoInput').click();
+});
+document.getElementById('setupChoosePhotoBtn').addEventListener('click', () => {
+  document.getElementById('setupPhotoInput').click();
+});
+document.getElementById('setupPhotoInput').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    pendingSetupPhoto = await readFileAsDataURL(file);
+    const preview = document.getElementById('setupAvatarPreview');
+    preview.style.backgroundImage = `url(${pendingSetupPhoto})`;
+    preview.style.backgroundSize = 'cover';
+    preview.style.backgroundPosition = 'center';
+    preview.textContent = '';
+  } catch (err) {
+    console.error('Photo read failed:', err);
+    showToast('Could not load that photo. Please try another.');
+  }
+});
+
+document.getElementById('setupContinueBtn').addEventListener('click', () => {
+  const nameInput = document.getElementById('setupNameInput');
+  const nameField = document.getElementById('setupNameField');
+  const name = nameInput.value.trim();
+
+  if (!name) {
+    nameField.classList.add('invalid');
+    return;
+  }
+  nameField.classList.remove('invalid');
+
+  const profile = { name, photo: pendingSetupPhoto || null };
+  ProfileService.save(profile);
+  applyProfileToUI(profile);
+  document.getElementById('profileSetupOverlay').classList.remove('open');
+  showAppShell();
+  showToast(`Welcome, ${name}!`);
+});
+
+document.getElementById('setupNameInput').addEventListener('input', () => {
+  document.getElementById('setupNameField').classList.remove('invalid');
+});
+
+function showAppShell() {
+  document.getElementById('appShell').style.display = 'flex';
+}
+
+function initProfileGate() {
+  const profile = ProfileService.get();
+  if (profile) {
+    applyProfileToUI(profile);
+    showAppShell();
+  } else {
+    document.getElementById('profileSetupOverlay').classList.add('open');
+  }
+}
+
+/*
+ * ------------------------------------------------------------------
+ * VIEW LYRICS MODAL (read-only, all users)
+ * ------------------------------------------------------------------
+ */
+const viewLyricsOverlay = document.getElementById('viewLyricsOverlay');
+function openViewLyricsModal(item) {
+  document.getElementById('viewLyricsTitle').textContent = item.title;
+  document.getElementById('viewLyricsArtist').textContent = item.artist;
+  document.getElementById('viewLyricsBody').textContent = item.lyrics;
+  viewLyricsOverlay.classList.add('open');
+}
+function closeViewLyricsModal() {
+  viewLyricsOverlay.classList.remove('open');
+}
+document.getElementById('closeViewLyricsBtn').addEventListener('click', closeViewLyricsModal);
+viewLyricsOverlay.addEventListener('click', (e) => {
+  if (e.target === viewLyricsOverlay) closeViewLyricsModal();
+});
+
+document.getElementById('lyricsGrid').addEventListener('click', async (e) => {
+  const card = e.target.closest('.song-card[data-id]');
+  if (!card) return;
+  const all = await DataService.getAll();
+  const item = all.find(i => i.id === card.dataset.id);
+  if (item) openViewLyricsModal(item);
+});
+
+/*
+ * ------------------------------------------------------------------
+ * EDIT LYRICS MODAL (admin only — edit title/artist/lyrics)
+ * ------------------------------------------------------------------
+ */
+const editLyricsOverlay = document.getElementById('editLyricsOverlay');
+function openEditLyricsModal(item) {
+  document.getElementById('editLyricsId').value = item.id;
+  document.getElementById('editTitleInput').value = item.title;
+  document.getElementById('editArtistInput').value = item.artist;
+  document.getElementById('editLyricsTextarea').value = item.lyrics;
+  ['editTitleField', 'editArtistField', 'editLyricsField'].forEach(id => {
+    document.getElementById(id).classList.remove('invalid');
+  });
+  editLyricsOverlay.classList.add('open');
+}
+function closeEditLyricsModal() {
+  editLyricsOverlay.classList.remove('open');
+}
+document.getElementById('closeEditLyricsBtn').addEventListener('click', closeEditLyricsModal);
+document.getElementById('cancelEditLyricsBtn').addEventListener('click', closeEditLyricsModal);
+editLyricsOverlay.addEventListener('click', (e) => {
+  if (e.target === editLyricsOverlay) closeEditLyricsModal();
+});
+
+document.getElementById('editLyricsForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const id = document.getElementById('editLyricsId').value;
+  const title = document.getElementById('editTitleInput').value;
+  const artist = document.getElementById('editArtistInput').value;
+  const lyrics = document.getElementById('editLyricsTextarea').value;
+
+  let hasError = false;
+  if (!title.trim()) { document.getElementById('editTitleField').classList.add('invalid'); hasError = true; }
+  if (!artist.trim()) { document.getElementById('editArtistField').classList.add('invalid'); hasError = true; }
+  if (!lyrics.trim()) { document.getElementById('editLyricsField').classList.add('invalid'); hasError = true; }
+  if (hasError) return;
+
+  try {
+    const updated = await DataService.update(id, { title, artist, lyrics });
+    closeEditLyricsModal();
+    pushActivity(`Edited "${updated ? updated.title : id}"`);
+    showToast('Lyrics updated.');
+    await Promise.all([renderManageLyrics(), renderPendingReview(), renderDashboardFeed(document.getElementById('searchInput').value), renderSongwriters()]);
+  } catch (err) {
+    console.error('Edit failed:', err);
+    showToast('Something went wrong. Please try again.');
+  }
+});
+
+/*
+ * ------------------------------------------------------------------
+ * MANAGE LYRICS VIEW (admin-gated — edit or delete any submission)
+ * ------------------------------------------------------------------
+ */
+async function renderManageLyrics() {
+  const list = document.getElementById('manageLyricsList');
+  const emptyState = document.getElementById('manageLyricsEmptyState');
+  const all = await DataService.getAll();
+
+  list.innerHTML = '';
+  if (all.length === 0) {
+    emptyState.style.display = 'block';
+  } else {
+    emptyState.style.display = 'none';
+    all.forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'manage-item';
+      const badgeClass = item.status === 'published' ? 'badge-published' : 'badge-pending';
+      const badgeLabel = item.status === 'published' ? 'Published' : 'Pending';
+      row.innerHTML = `
+        <div class="manage-item-head">
+          <div>
+            <h4>${escapeHtml(item.title)}</h4>
+            <p class="artist">${escapeHtml(item.artist)} &middot; ${formatDate(item.createdAt)}</p>
+          </div>
+          <span class="badge ${badgeClass}">${badgeLabel}</span>
+        </div>
+        <div class="manage-lyrics-preview">${escapeHtml(item.lyrics)}</div>
+        <div class="manage-actions">
+          <button class="btn btn-danger btn-sm" data-action="manage-delete" data-id="${item.id}">Delete</button>
+          <button class="btn btn-ghost btn-sm" data-action="manage-edit" data-id="${item.id}">Edit</button>
+        </div>
+      `;
+      list.appendChild(row);
+    });
+  }
+}
+
+document.getElementById('manageLyricsList').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if (!btn) return;
+  const { action, id } = btn.dataset;
+
+  if (action === 'manage-edit') {
+    const all = await DataService.getAll();
+    const item = all.find(i => i.id === id);
+    if (item) openEditLyricsModal(item);
+    return;
+  }
+  if (action === 'manage-delete') {
+    if (!confirm('Permanently delete this song? This cannot be undone.')) return;
+    btn.disabled = true;
+    try {
+      const all = await DataService.getAll();
+      const item = all.find(i => i.id === id);
+      await DataService.delete(id);
+      pushActivity(`Deleted "${item ? item.title : id}"`);
+      showToast('Lyrics deleted.');
+      await Promise.all([renderManageLyrics(), renderPendingReview(), renderDashboardFeed(document.getElementById('searchInput').value), renderSongwriters()]);
+    } catch (err) {
+      console.error('Delete failed:', err);
+      showToast('Something went wrong. Please try again.');
+      btn.disabled = false;
+    }
+  }
+});
+
+/*
+ * ------------------------------------------------------------------
+ * MANAGE PROFILE VIEW (admin-gated — edit or remove device profile)
+ * ------------------------------------------------------------------
+ */
+function renderManageProfile() {
+  const body = document.getElementById('manageProfileBody');
+  const profile = ProfileService.get();
+
+  if (!profile) {
+    body.innerHTML = `<div class="empty-state">No profile is currently saved on this device.</div>`;
+    return;
+  }
+
+  body.innerHTML = `
+    <div class="profile-manage-row">
+      <div class="avatar-lg" id="manageProfileAvatar"></div>
+      <div class="info">
+        <p class="pname">${escapeHtml(profile.name)}</p>
+        <p class="pmeta">${profile.photo ? 'Photo on file' : 'No photo set'} &middot; saved on this device</p>
+      </div>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-primary btn-sm" id="manageProfileEditBtn">Edit name / photo</button>
+      <button class="btn btn-danger btn-sm" id="manageProfileDeleteBtn">Remove profile</button>
+    </div>
+  `;
+  setAvatarVisual(document.getElementById('manageProfileAvatar'), profile);
+
+  document.getElementById('manageProfileEditBtn').addEventListener('click', () => openEditProfileModal(profile));
+  document.getElementById('manageProfileDeleteBtn').addEventListener('click', () => {
+    if (!confirm(`Remove ${profile.name}'s saved profile from this device? They will see the setup form again next time the app opens.`)) return;
+    ProfileService.clear();
+    pushActivity(`Removed device profile for ${profile.name}`);
+    showToast('Profile removed from this device.');
+    renderManageProfile();
+  });
+}
+
+/*
+ * ------------------------------------------------------------------
+ * EDIT PROFILE MODAL (admin only — change name/photo saved on device)
+ * ------------------------------------------------------------------
+ */
+const editProfileOverlay = document.getElementById('editProfileOverlay');
+let pendingEditPhoto = null;
+
+function openEditProfileModal(profile) {
+  pendingEditPhoto = profile.photo || null;
+  document.getElementById('editProfileNameInput').value = profile.name;
+  document.getElementById('editProfileNameField').classList.remove('invalid');
+  const preview = document.getElementById('editAvatarPreview');
+  setAvatarVisual(preview, profile);
+  editProfileOverlay.classList.add('open');
+}
+function closeEditProfileModal() {
+  editProfileOverlay.classList.remove('open');
+}
+document.getElementById('closeEditProfileBtn').addEventListener('click', closeEditProfileModal);
+document.getElementById('cancelEditProfileBtn').addEventListener('click', closeEditProfileModal);
+editProfileOverlay.addEventListener('click', (e) => {
+  if (e.target === editProfileOverlay) closeEditProfileModal();
+});
+
+document.getElementById('editAvatarPreview').addEventListener('click', () => {
+  document.getElementById('editPhotoInput').click();
+});
+document.getElementById('editChoosePhotoBtn').addEventListener('click', () => {
+  document.getElementById('editPhotoInput').click();
+});
+document.getElementById('editPhotoInput').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    pendingEditPhoto = await readFileAsDataURL(file);
+    const preview = document.getElementById('editAvatarPreview');
+    preview.style.backgroundImage = `url(${pendingEditPhoto})`;
+    preview.style.backgroundSize = 'cover';
+    preview.style.backgroundPosition = 'center';
+    preview.textContent = '';
+  } catch (err) {
+    console.error('Photo read failed:', err);
+    showToast('Could not load that photo. Please try another.');
+  }
+});
+
+document.getElementById('editProfileForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nameInput = document.getElementById('editProfileNameInput');
+  const name = nameInput.value.trim();
+  if (!name) {
+    document.getElementById('editProfileNameField').classList.add('invalid');
+    return;
+  }
+  const profile = { name, photo: pendingEditPhoto };
+  ProfileService.save(profile);
+  applyProfileToUI(profile);
+  closeEditProfileModal();
+  pushActivity(`Updated device profile to "${name}"`);
+  showToast('Profile updated.');
+  renderManageProfile();
+});
+
+/*
+ * ------------------------------------------------------------------
+ * INIT
+ * ------------------------------------------------------------------
+ */
+initProfileGate();
+renderDashboardFeed();
+renderActivityFeed();
+
+})();
+</script>
+
+<!-- ============ PWA: service worker registration ============
+     Registers sw.js so the app shell (this HTML, CSS, JS) is cached
+     and can be opened with no internet connection — required for true
+     offline use. sw.js must sit in the SAME folder as this HTML file
+     when you upload it (a service worker can't be inlined into a
+     data: URI the way the manifest above is — browsers require it to
+     be a real, separately-fetchable script). Your lyrics/profile data
+     is already offline-capable via localStorage; this just makes the
+     app itself loadable without a network round-trip. -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {
+        // sw.js missing from this folder, or running from file:// —
+        // the app still works fully online, just without offline caching.
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
